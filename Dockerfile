@@ -7,6 +7,7 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+RUN apt-get update -y && apt-get install default-jre -y
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
