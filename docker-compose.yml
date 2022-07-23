@@ -6,5 +6,17 @@ services:
       context: nlp-api
     ports:
       - "5003:5003"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    networks:
+      - network1
+
+# https://stackoverflow.com/questions/70725881/what-is-the-equivalent-of-add-host-host-docker-internalhost-gateway-in-a-comp
+networks:
+  network1:
+    name: my-network
+    attachable: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
+          ip_range: 172.18.5.0/24
+          gateway: 172.18.0.1
