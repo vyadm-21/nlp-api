@@ -1,0 +1,8 @@
+version: "3"
+services:
+  nlp_api:
+    container_name: "nlp_api"
+    build:
+      context: nlp-api
+    ports:
+      - "8080:5003"
